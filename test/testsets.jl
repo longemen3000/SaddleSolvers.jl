@@ -48,7 +48,7 @@ end
 #   TODO: add reference
 # ============================================================================
 
-@with_kw type MullerPotential
+Base.@kwdef struct MullerPotential
    B::Vector{Matrix{Float64}} = [ [ -1 0; 0 -10], [-1 0; 0 -10],
                                     [-6.5 5.5; 5.5 -6.5], [0.7 0.3; 0.3 0.7] ]
    A::Vector{Float64} = [-200, -100, -170, 15]
@@ -83,7 +83,7 @@ end
 # TEST SET: DoubleWell
 # ============================================================================
 
-@with_kw type DoubleWell
+Base.@kwdef struct DoubleWell
    A::Matrix{Float64} = eye(2)
 end
 
@@ -125,7 +125,7 @@ end
 # TEST SET: Lennard-Jones Cluster
 # ============================================================================
 
-@with_kw type LJcluster
+Base.@kwdef struct LJcluster
    ε::Float64 = 0.25
    σ::Float64 = 1.
    ρ_min::Float64 = 1.0
@@ -272,7 +272,7 @@ end
 
 `bc = :clamped` is also allowed
 """
-type LJVacancy2D
+Base.@kwdef struct LJVacancy2D
    R::Float64
    Xref::Matrix{Float64}
    Ifree::Vector{Int}
@@ -281,7 +281,7 @@ end
 LJVacancy2D(; R::Float64 = 5.1, bc=:free) =
    LJVacancy2D(R, LJaux.vacancy_refconfig(R, bc)...)
 
-function dofs2pos{T}(V::LJVacancy2D, r::Vector{T})
+function dofs2pos(V::LJVacancy2D, r::Vector{T}) where T
    X = convert(Matrix{T}, V.Xref)
    X[:, V.Ifree] = reshape(r, 2, length(r) ÷ 2)
    return X
@@ -359,7 +359,7 @@ end
 end
 
 
-type MorseIsland
+struct MorseIsland
    Xref::Matrix{Float64}
    Ifix::Vector{Int}
    Ifree::Vector{Int}

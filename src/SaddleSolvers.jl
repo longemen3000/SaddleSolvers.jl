@@ -1,9 +1,9 @@
-module SaddleSearch
-
+module SaddleSolvers
+using NLSolvers
+using Dierckx #pathmisc.jl
 using Parameters
-
 export run!
-
+using Printf: @printf,@sprintf
 
 # logging, preconditioner transformation, weidth norms and dots,
 include("misc.jl")
@@ -12,7 +12,7 @@ include("misc.jl")
 include("linesearch.jl")
 
 # numerical ode dolvers
-include("ode.jl")
+##include("ode.jl") use OrdinaryDiffEq.jl
 
 # =========== Walker-type saddle search methods ============
 

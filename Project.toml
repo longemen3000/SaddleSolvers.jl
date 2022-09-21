@@ -1,0 +1,9 @@
+name = "SaddleSolvers"
+uuid = "1a5f4f19-3f1f-4235-9c97-9c6236b1280b"
+version = "0.1.0"
+
+[deps]
+Dierckx = "39dd38d3-220a-591b-8e3c-4c3a8c710a94"
+NLSolvers = "337daf1e-9722-11e9-073e-8b9effe078ba"
+Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"

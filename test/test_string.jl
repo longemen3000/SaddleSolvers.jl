@@ -47,7 +47,7 @@ E, dE = objective(V)
 P = copy(V.A); P[1] = 1.0
 precon = x->[P]
 
-path = StaticString(1./c, tol, maxnit, preconI, serial(), false,
+path = StaticString(1. / c, tol, maxnit, preconI, serial(), false,
                         verbose)
 PATHx, PATHlog, _ = run!(path, E, dE, Path(x))
 @test PATHlog[:maxres][end] <= path.tol

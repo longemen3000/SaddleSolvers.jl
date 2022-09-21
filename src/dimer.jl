@@ -13,7 +13,7 @@ localmerit(x, x0, v0, len, g0, λ0, E) = (
 
 
 
-function run!{T}(method::StaticDimer, E, dE, x0::Vector{T}, v0::Vector{T})
+function run!(method::StaticDimer, E, dE, x0::Vector{T}, v0::Vector{T}) where T
 
    # read all the parameters
    @unpack a_trans, a_rot, tol_trans, tol_rot, maxnumdE, len,
@@ -88,7 +88,7 @@ end
 
 
 
-function run!{T}(method::BBDimer, E, dE, x0::Vector{T}, v0::Vector{T})
+function run!(method::BBDimer, E, dE, x0::Vector{T}, v0::Vector{T}) where T
 
    # read all the parameters
    @unpack a0_trans, a0_rot, tol_trans, tol_rot, maxnumdE, len,
@@ -243,7 +243,7 @@ function dimer_project(z, P, precon_prep!)
    return znew
 end
 
-
+#=
 function run!(method::ODEDimer, E, dE, x0::Vector, v0::Vector)
 
    # read all the parameters
@@ -273,7 +273,7 @@ function run!(method::ODEDimer, E, dE, x0::Vector, v0::Vector)
    z = zout[end]
    return z[1:n], z[n+1:end], log
 end
-
+=#
 function dimer_jacobian(z, dE, ddE, P, precon_prep!, len)
 
    n = length(z) ÷ 2

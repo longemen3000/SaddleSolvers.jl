@@ -20,7 +20,7 @@ for n = 1:num_iter
 end
 ```
 """
-type IterationLog
+struct IterationLog
    keys::Tuple
    D::Dict
 end
@@ -73,9 +73,9 @@ maxres(l::IterationLog) = l[:maxres]
 
 
 
-Base.dot{T}(x, A::UniformScaling{T}, y) = A.λ * dot(x,y)
-Base.dot(x, A::AbstractMatrix, y) = dot(x, A*y)
-Base.norm(P, x) = sqrt(dot(x, P*x))
+#Base.dot{T}(x, A::UniformScaling{T}, y) = A.λ * dot(x,y)
+#Base.dot(x, A::AbstractMatrix, y) = dot(x, A*y)
+#Base.norm(P, x) = sqrt(dot(x, P*x))
 dualnorm(P, f) = sqrt(dot(f, P \ f))
 
 """
@@ -83,10 +83,10 @@ An abstract linear operator representing `P + s * (Pv) ⊗ (Pv)`
 
 Define `*` and `\`, the latter via Sherman-Morrison-Woodbury formula.
 """
-type PreconSMW{T} <: AbstractMatrix{T}
-   P       # an invertiable N x N matrix (probably spd)
-   v       # a vector of length N
-   Pv      # the vector P * v
+struct PreconSMW{ℙ,𝕧,ℙ𝕧,T} <: AbstractMatrix{T}
+   P::ℙ       # an invertiable N x N matrix (probably spd)
+   v::𝕧       # a vector of length N
+   Pv::ℙ𝕧      # the vector P * v
    s::T    # see doc
    smw::T  # the SMW-factor
 end

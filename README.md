@@ -8,5 +8,7 @@
 [![codecov.io](http://codecov.io/github/cortner/SaddleSearch.jl/coverage.svg?branch=master)](http://codecov.io/github/cortner/SaddleSearch.jl?branch=master)
 -->
 
-Algorithms for computing saddles points in nonlinear energy landscapes. Work in
+ Algorithms for computing saddles points in nonlinear energy landscapes. Work in
 progress.
+
+Fork of [SaddleSearch.jl](https://github.com/cortner/SaddleSearch.jl).
